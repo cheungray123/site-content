@@ -1,0 +1,16 @@
+name: Trigger Client Build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  trigger:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger site-client build
+        env:
+          GH_TOKEN: ${{ secrets.PAT }}
+        run: |
+          gh workflow run build-on-content-update.yml --repo cheungray123/site-client --field skip_fetch=false
