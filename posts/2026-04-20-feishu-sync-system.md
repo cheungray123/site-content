@@ -102,65 +102,6 @@ photos/{slug}/
 
 生成一个 Personal Access Token (Classic)，勾上 `repo` 和 `workflow` 权限。
 
-### 部署 Workers
-
-```bash
-# 安装 Wrangler CLI
-npm install -g wrangler
-
-# 克隆项目
-git clone https://github.com/cheungray123/feishu-servers
-cd feishu-servers
-
-# 安装依赖
-pnpm install
-
-# 配置环境变量
-wrangler secret put FEISHU_APP_ID
-wrangler secret put FEISHU_APP_SECRET
-wrangler secret put GITHUB_PAT
-wrangler secret put FEISHU_SIGNING_SECRET
-
-# 配置 R2 和 KV（编辑 wrangler.toml）
-# R2: 绑定 IMG_BUCKET，bucket_name 填你的 R2 桶名
-# KV: 绑定 PENDING_KV，id 填你的 KV 命名空间 ID
-
-# 部署
-wrangler deploy
-```
-
-`wrangler.toml` 关键配置：
-
-```toml
-name = "feishu-sync-bot"
-main = "src/index.js"
-compatibility_date = "2024-02-20"
-
-[[r2_buckets]]
-binding = "IMG_BUCKET"
-bucket_name = "你的R2桶名字"
-
-[[kv_namespaces]]
-binding = "PENDING_KV"
-id = "你的KV命名空间ID"
-```
-
-环境变量清单：
-
-| 变量名 | 说明 | 配置方式 |
-|--------|------|----------|
-| `FEISHU_APP_ID` | 飞书应用 App ID | `wrangler secret put` |
-| `FEISHU_APP_SECRET` | 飞书应用 App Secret | `wrangler secret put` |
-| `GITHUB_PAT` | GitHub Personal Access Token | `wrangler secret put` |
-| `FEISHU_SIGNING_SECRET` | 飞书验签密钥 | `wrangler secret put` |
-| `FEISHU_WIKI_SPACE_ID` | 飞书知识库 ID（二选一） | `wrangler.toml` [vars] |
-| `FEISHU_FOLDER_ID` | 飞书云盘文件夹 ID（二选一） | `wrangler.toml` [vars] |
-| `FEISHU_PHOTOS_FOLDER_ID` | 飞书相册文件夹 ID（可选） | `wrangler.toml` [vars] |
-| `R2_PUBLIC_URL` | R2 公开访问域名 | `wrangler.toml` [vars] |
-| `GITHUB_CLIENT_BRANCH` | 前端分支，默认 `main` | `wrangler.toml` [vars] |
-
-部署完成后，把飞书后台事件订阅的 URL 改成 `https://feishu-sync-bot.你的账号.workers.dev/webhook/feishu`
-
 ## 使用
 
 ### 指令
