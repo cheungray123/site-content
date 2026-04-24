@@ -4,7 +4,7 @@ date: 2026-04-21T18:00:10.000Z
 tags: ["飞书，代码"]
 category: "折腾"
 description: "我的博客评论系统之前只有邮件通知。说实话邮件太慢了，而且我经常不看。因为我写文章一直用的飞书，[从飞书到博客：基于 Cloudflare Workers 的全自动私有文章同步系统](https://easte.cc/posts/2026-04-20-feishu-sync-system) 。所以想加"
-image: "https://img.easte.cc/posts/images/H1pXbrnGho23tXxC2pVc9CgBnGe.jpg"
+image: "https://static.easte.cc/posts/images/H1pXbrnGho23tXxC2pVc9CgBnGe.jpg"
 draft: false
 ---
 ## 起因
@@ -152,7 +152,7 @@ async function _notifyReply (comment, config, getParent) {
 - 评论显示文章标题（需要改 schema 加 title 字段）
 ### 结果
 
-![](https://img.easte.cc/posts/images/H1pXbrnGho23tXxC2pVc9CgBnGe.jpg)
+![](https://static.easte.cc/posts/images/H1pXbrnGho23tXxC2pVc9CgBnGe.jpg)
 
 ***
 

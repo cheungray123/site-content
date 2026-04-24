@@ -4,7 +4,7 @@ date: 2026-04-19T03:38:14.000Z
 tags: ["自动化", "飞书"]
 category: "折腾"
 description: "这是我用飞书写的文章，自上次更新已经过去了一个月了，正好清明节回老家几天，有空就把前后端重构了一遍，这次前端没有用SSR，现在打包之后是静态文件，后端又把评论重新写了一遍。目前源码和文章数据不在一个仓库，当文章仓库发生变化，前端源码自动拉取文章仓库进行打包部署，完全由github action 自动"
-image: "https://img.easte.cc/posts/images/T1Feb9eppowQBxxJHLNc3P7Enuc.jpg"
+image: "https://static.easte.cc/posts/images/T1Feb9eppowQBxxJHLNc3P7Enuc.jpg"
 draft: false
 ---
 ## 如题
@@ -15,11 +15,11 @@ draft: false
 
 所以现在的流程是飞书写文档，写完机器人自动触发把docx格式解析成为md格式并推送到文章仓库，文章仓库触发让源码拉取文章仓库打包部署，现在除了写文章需要俺写，其它什么也不用管，这样就轻松多了。本来写了个管理文章仓库文章的项目，现在也不用了。手机上的图片插入文档可以自动上传到仓库或者R2，现在是方便多了，以后可以经常更新了。等使用一段时间，稳定之后我会开源。
 
-![](https://img.easte.cc/posts/images/T1Feb9eppowQBxxJHLNc3P7Enuc.jpg)
+![](https://static.easte.cc/posts/images/T1Feb9eppowQBxxJHLNc3P7Enuc.jpg)
 
 前两天去山里挖笋子，准备晒点笋干。第一次只是在外围转转了一下，挖了大概有个十五公斤左右，回去就收拾干净晒上了。奈何天公不作美，连续一周不是下雨就是阴天，已经发黏坏掉了，把老太太气的不行。
 
-![](https://img.easte.cc/posts/images/Hgt4bgH06o5Xdhx4X8ycQhXNnKe.jpg)
+![](https://static.easte.cc/posts/images/Hgt4bgH06o5Xdhx4X8ycQhXNnKe.jpg)
 
 第二次去的里面，好家伙，几天没来已经长的比我还高了，高的能有2米多。可惜这玩意不能吃了。
 
