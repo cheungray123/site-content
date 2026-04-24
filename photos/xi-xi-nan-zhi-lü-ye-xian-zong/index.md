@@ -7,3 +7,11 @@ category: 风景
 ---
 
 踏入西溪南，才算撞见徽州藏在烟火外的绿野秘境。暑假盛夏的枫杨林绿意疯长、浓荫蔽日，溪水绕着古村缓缓流淌，阳光穿过枝叶洒下斑驳碎影，没有喧嚣人潮，只剩鸟鸣与流水声相伴。这里没有刻意雕琢的精致，全是原生态的野趣，踩着石板路穿行林间，仿佛闯入童话里的仙踪秘境。远离都市浮躁，在这片清幽里放空身心，让时光慢慢流淌，才懂这份不被打扰的宁静，正是旅途里最珍贵的馈赠。
+
+
+::grid
+![](https://static.easte.cc/photos/xi-xi-nan-zhi-lü-ye-xian-zong/0321141809_15_12.jpg)
+![](https://static.easte.cc/photos/xi-xi-nan-zhi-lü-ye-xian-zong/0321141811_17_12.jpg)
+![](https://static.easte.cc/photos/xi-xi-nan-zhi-lü-ye-xian-zong/21141807_13_12.jpg)
+![](https://static.easte.cc/photos/xi-xi-nan-zhi-lü-ye-xian-zong/21141810_16_12.jpg)
+![](https://static.easte.cc/photos/xi-xi-nan-zhi-lü-ye-xian-zong/260321141807_13_12.jpg)

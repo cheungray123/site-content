@@ -11,3 +11,19 @@ category: 旅行
 登临滕王阁，赣江水阔天长，"落霞与孤鹜齐飞，秋水共长天一色"的意境扑面而来。千年前的那个秋日，王勃挥毫泼墨，将这江南名楼的壮丽定格于诗行之间。如今的滕王阁虽是重建，却依然延续着那份古典的气韵，飞檐翘角间藏着说不尽的故事。
 
 走进南昌的小巷深处，瓦罐汤的香气四溢，拌粉的麻辣鲜香，是最地道的南昌味道。在这座既有历史底蕴又充满烟火气的城市里，每一处转角都藏着惊喜。
+
+
+::grid
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/162013_188_1.jpg)
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/162102_192_1.jpg)
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/162107_197_1.jpg)
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/162108_198_1.jpg)
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/162110_200_1.jpg)
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/162114_204_1.jpg)
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/2103_193_1.jpg)
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/23161832_176_1.jpg)
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/23161839_183_1.jpg)
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/3161833_177_1.jpg)
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/3162012_187_1.jpg)
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/3162014_189_1.jpg)
+![](https://static.easte.cc/photos/hong-dou-xin-fu-nan-chang/62105_195_1.jpg)
