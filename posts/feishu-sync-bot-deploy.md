@@ -4,48 +4,52 @@ date: 2026-04-26
 tags: [Cloudflare Workers, 飞书, 自动化, 部署]
 category: 技术
 draft: false
-description: 在飞书写完文档，丢一句"同步"就自动推到博客。顺便聊聊这个机器人的架构。
+description: 在飞书写完文档，丢一句「同步」就自动推到博客。顺便聊聊这个机器人的架构。
 ---
 
-飞书文档写完了想同步到博客。以前靠手复制粘贴，写一次，改一次，重新部署一次。后面写了个机器人，飞书里丢一句命令就完事。
+在飞书写文档，想同步到博客。以前靠手复制粘贴，每次改完都要折腾一遍。后来写了个机器人，飞书里丢一句命令就完事。
 
 项目地址: [github.com/cheungray123/easte-feishu-server](https://github.com/cheungray123/easte-feishu-server)
 
-支持文章、说说、相册三种类型。图片自动传到 R2 或 GitHub。改过的文档只增量更新，不重复推送。
+支持文章、说说、相册三种类型。图片自动传到 R2 或 GitHub，改过的文档只增量更新，不重复推送。
 
 ## 架构
 
-一个 Cloudflare Worker，单文件，Hono 框架，大概 900 行。
+一个 Cloudflare Worker，单文件，Hono 框架，大概 900 行。流程如下:
 
-流程很简单:
-
+```mermaid
+flowchart LR
+    A["飞书发消息"] --> B["Worker 收 webhook"]
+    B --> C["调飞书 API 拉文档"]
+    C --> D["转 Markdown"]
+    D --> E["处理图片"]
+    E --> F["推 GitHub"]
+    F --> G["触发博客构建"]
 ```
-飞书发消息 → Worker 收 webhook → 调飞书 API 拉文档
-→ 转 Markdown → 处理图片 → 推 GitHub → 触发博客构建
-```
 
-几个核心模块:
+核心模块一共这么几个:
 
-- **命令解析** — 收到飞书消息，判断是同步还是删除。中文英文都认。
-- **文档解析** — 递归遍历飞书文档块树，按类型转 Markdown。标题、列表、表格、代码块都处理。
-- **图片管线** — 从飞书下载原图，上传到 R2 或 GitHub，替换 Markdown 里的图片链接。
-- **增量逻辑** — 比对飞书修改时间和 GitHub 文件的上次提交时间，旧的跳过。
-- **GitHub 推送** — 写到 site-content 仓库，再触发博客的构建 workflow。
-- **删除确认** — 删东西先存 KV，等用户回复 Y 才执行。
+**命令解析** — 收到飞书消息，判断是同步还是删除，中英文都认。
+
+**文档解析** — 递归遍历飞书文档块树，按类型转 Markdown。标题、列表、表格、代码块都处理。
+
+**图片管线** — 从飞书下载原图，上传到 R2 或 GitHub，替换 Markdown 里的图片链接。
+
+**增量逻辑** — 比对飞书修改时间和 GitHub 文件的上次提交时间，旧的跳过。
+
+**GitHub 推送** — 推到文章仓库，再触发博客的构建 workflow。
+
+**删除确认** — 删东西先存 KV，等用户回复 Y 才执行。
 
 ## 部署
 
-需要准备的东西:
+需要: Cloudflare 账号、飞书开放平台的应用、GitHub PAT（repo + workflow 权限）。
 
-1. 一个 Cloudflare 账号
-2. 飞书开放平台的应用
-3. GitHub Personal Access Token（repo + workflow 权限）
-
-把仓库 clone 下来，用 `wrangler deploy` 部署。
+clone 下来，`wrangler deploy` 就部署了。
 
 ## 配置 secrets
 
-在 Cloudflare Workers 控制台 → Settings → Variables → Secrets 添加:
+Cloudflare Workers 控制台 → Settings → Variables → Secrets 添加:
 
 | 变量名 | 说明 |
 |--------|------|
@@ -94,20 +98,20 @@ wrangler.toml 里配好 R2 和 KV 的 binding。
 
 ## 增量同步
 
-每次同步拿飞书文档的修改时间和 GitHub 的上次提交时间比。GitHub 上已经是新的就不动。不会每次都重写。
+每次同步拿飞书文档的修改时间和 GitHub 的上次提交时间比。GitHub 上已经是新的就不动，不会每次都重写。
 
 ## 踩过的一些坑
 
-表格渲染花了不少时间。飞书的 table block 没有行列嵌套结构，只有列数和一维子节点列表，得自己算行列索引。
+**表格**。飞书的 table block 没有行列嵌套结构，只有列数和一维子节点列表，得自己算行列索引。这块花了比较多的时间调。
 
-消息去重也需要注意。飞书 webhook 会重试，不加去重每条消息重复回复。
+**消息去重**。飞书 webhook 会重试，不加去重每条消息重复回复。解决办法是开一个内存 Set 做幂等，100 条上限。
 
-图片 Base64 在 Workers 里用 btoa 有大小限制，后来换了 Buffer。
+**图片 Base64**。Workers 里用 btoa 有大小限制，大图会崩，换成 Buffer 就好了。
 
-时间戳单位也不一样。飞书返回秒，GitHub 返回毫秒，不归一化永远对不上。
+**时间戳单位**。飞书返回秒，GitHub 返回毫秒，不归一化永远对不上。
 
-封面 URL 里有特殊字符，直接塞 frontmatter 会炸，需要 encode。
+**封面 URL**。URL 里有特殊字符，直接塞 frontmatter 会炸，需要 encode 一遍。
 
 ---
 
-就这样。在飞书写完 -> 发条消息 -> 自动到博客。不用再手动粘贴了。
+在飞书写完 → 发条消息 → 自动到博客。不用再手动粘贴了。
